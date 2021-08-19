@@ -13,9 +13,9 @@ class CreateCategoryUseCase {
         this.categoriesRepository = categoriesRepository;
     }
 
-    execute({name, description} : IRequest) :void {
+    async execute({name, description} : IRequest) :Promise<void> {
 
-        const categoryAlreadyExist = this.categoriesRepository.findByName(name);
+        const categoryAlreadyExist =  await this.categoriesRepository.findByName(name);
 
         if(categoryAlreadyExist) {
             throw new Error("Category Already Exist");

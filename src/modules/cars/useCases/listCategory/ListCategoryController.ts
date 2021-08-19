@@ -8,8 +8,8 @@ class ListCategoryController {
         this.listCategoryUseCase = listCategoryUseCase;
     }
 
-    handle(request : Request, response : Response) : Response {
-        const list = this.listCategoryUseCase.execute();
+    async handle(request : Request, response : Response) : Promise<Response> {
+        const list = await this.listCategoryUseCase.execute();
 
         return response.json(list);
     }
